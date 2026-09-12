@@ -23,6 +23,10 @@ public sealed class PedidosVendasDbContext : DbContext
 
     public DbSet<ProdutosPedido> ProdutosPedido => Set<ProdutosPedido>();
 
+    public DbSet<FormaPagto> FormasPagto => Set<FormaPagto>();
+
+    public DbSet<TenantFormaPagtoConfig> TenantFormaPagtoConfigs => Set<TenantFormaPagtoConfig>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

@@ -2,6 +2,7 @@ using PedidosVendas.API.Services;
 using PedidosVendas.Application.Carrinho;
 using PedidosVendas.Application.Common.Interfaces;
 using PedidosVendas.Application.Cupons;
+using PedidosVendas.Application.Pagamento;
 using PedidosVendas.Infrastructure;
 
 namespace PedidosVendas.API.Extensions;
@@ -30,6 +31,9 @@ public static class ApiServiceCollectionExtensions
 
         // Etapa 04: aplicação de cupom ao carrinho (sem decrementar quantidade).
         services.AddScoped<ICupomAplicacaoService, CupomAplicacaoService>();
+
+        // Etapa 06: validação de parcelas.
+        services.AddScoped<IParcelamentoService, ParcelamentoService>();
 
         services.AddControllers();
         services.AddPedidosVendasHealthChecks();

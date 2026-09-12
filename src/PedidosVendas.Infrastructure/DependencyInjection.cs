@@ -70,6 +70,9 @@ public static class DependencyInjection
         // Etapa 03: persistência do agregado Pedido.
         services.AddScoped<IPedidoRepository, PedidoRepository>();
 
+        // Etapa 06: catálogo de formas de pagamento + overrides por Tenant.
+        services.AddScoped<IFormaPagtoRepository, FormaPagtoRepository>();
+
         // Etapa 05: frete plugável por configuração. "Mock" é o único provedor desta
         // etapa; um provedor real entra como nova classe + novo ramo, sem tocar chamadas.
         services.Configure<FreteOptions>(configuration.GetSection(FreteOptions.SectionName));

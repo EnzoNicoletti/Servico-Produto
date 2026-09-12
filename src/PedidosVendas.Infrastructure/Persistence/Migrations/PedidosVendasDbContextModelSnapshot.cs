@@ -105,6 +105,31 @@ namespace PedidosVendas.Infrastructure.Persistence.Migrations
                     b.ToTable("CupomProduto", (string)null);
                 });
 
+            modelBuilder.Entity("PedidosVendas.Domain.Entities.FormaPagto", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<int>("QtdMaximaParcelas")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Descricao")
+                        .IsUnique();
+
+                    b.ToTable("FormaPagto", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_FormaPagto_QtdMinima", "\"QtdMaximaParcelas\" >= 1");
+                        });
+                });
+
             modelBuilder.Entity("PedidosVendas.Domain.Entities.Pedido", b =>
                 {
                     b.Property<Guid>("Id")
@@ -181,6 +206,36 @@ namespace PedidosVendas.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("PedidosVendas.Domain.Entities.TenantFormaPagtoConfig", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("IdFormaPagto")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("QtdMaximaParcelasOverride")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdFormaPagto");
+
+                    b.HasIndex("TenantId");
+
+                    b.HasIndex("TenantId", "IdFormaPagto")
+                        .IsUnique();
+
+                    b.ToTable("TenantFormaPagtoConfig", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_TenantFormaPagtoConfig_QtdMinima", "\"QtdMaximaParcelasOverride\" >= 1");
+                        });
+                });
+
             modelBuilder.Entity("PedidosVendas.Domain.Entities.CupomProduto", b =>
                 {
                     b.HasOne("PedidosVendas.Domain.Entities.Cupom", "Cupom")
@@ -201,6 +256,17 @@ namespace PedidosVendas.Infrastructure.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Pedido");
+                });
+
+            modelBuilder.Entity("PedidosVendas.Domain.Entities.TenantFormaPagtoConfig", b =>
+                {
+                    b.HasOne("PedidosVendas.Domain.Entities.FormaPagto", "FormaPagto")
+                        .WithMany()
+                        .HasForeignKey("IdFormaPagto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FormaPagto");
                 });
 
             modelBuilder.Entity("PedidosVendas.Domain.Entities.Cupom", b =>

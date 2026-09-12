@@ -5,6 +5,7 @@ using PedidosVendas.API.Extensions;
 using PedidosVendas.API.Middleware;
 using PedidosVendas.Infrastructure;
 using PedidosVendas.Infrastructure.Persistence;
+using PedidosVendas.Infrastructure.Persistence.Seed;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -64,6 +65,9 @@ try
         using var scope = app.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<PedidosVendasDbContext>();
         await db.Database.MigrateAsync();
+
+        // Seed do catálogo (idempotente; mesmo padrão do RoleSeeder no Identity).
+        await FormaPagtoSeeder.SeedAsync(scope.ServiceProvider);
     }
 
     app.Run();

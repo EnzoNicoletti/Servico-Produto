@@ -36,6 +36,9 @@ public sealed class IntegrationTestFixture : IAsyncLifetime
             await db.Database.MigrateAsync();
         }
 
+        // Seed do catálogo (o bloco Development do Program não roda em Testing).
+        await PedidosVendas.Infrastructure.Persistence.Seed.FormaPagtoSeeder.SeedAsync(Factory.Services);
+
         Client = Factory.CreateClient();
     }
 
