@@ -23,4 +23,13 @@ public sealed class MockProdutoServiceClientTests
 
         Assert.Null(produto);
     }
+
+    [Fact]
+    public async Task Retorna_produto_indisponivel_para_id_conhecido()
+    {
+        var produto = await _client.ObterPorIdAsync(MockProdutoServiceClient.ProdutoIndisponivelId);
+
+        Assert.NotNull(produto);
+        Assert.False(produto.Disponivel);
+    }
 }

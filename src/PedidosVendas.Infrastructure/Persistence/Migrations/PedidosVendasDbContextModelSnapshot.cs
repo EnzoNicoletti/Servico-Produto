@@ -105,6 +105,82 @@ namespace PedidosVendas.Infrastructure.Persistence.Migrations
                     b.ToTable("CupomProduto", (string)null);
                 });
 
+            modelBuilder.Entity("PedidosVendas.Domain.Entities.Pedido", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("DataAbertura")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DataFechamento")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("IdCliente")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("IdCupom")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("IdUnidade")
+                        .HasColumnType("uuid");
+
+                    b.Property<uint>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("xid")
+                        .HasColumnName("xmin");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uuid");
+
+                    b.Property<decimal>("ValorTotal")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("numeric(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TenantId", "IdCliente", "Status");
+
+                    b.ToTable("Pedido", (string)null);
+                });
+
+            modelBuilder.Entity("PedidosVendas.Domain.Entities.ProdutosPedido", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("IdPedido")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("IdProduto")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("ValorUnitario")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("numeric(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdProduto");
+
+                    b.HasIndex("IdPedido", "IdProduto")
+                        .IsUnique();
+
+                    b.ToTable("ProdutosPedido", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_ProdutosPedido_QuantidadePositiva", "\"Quantidade\" > 0");
+                        });
+                });
+
             modelBuilder.Entity("PedidosVendas.Domain.Entities.CupomProduto", b =>
                 {
                     b.HasOne("PedidosVendas.Domain.Entities.Cupom", "Cupom")
@@ -116,9 +192,25 @@ namespace PedidosVendas.Infrastructure.Persistence.Migrations
                     b.Navigation("Cupom");
                 });
 
+            modelBuilder.Entity("PedidosVendas.Domain.Entities.ProdutosPedido", b =>
+                {
+                    b.HasOne("PedidosVendas.Domain.Entities.Pedido", "Pedido")
+                        .WithMany("Itens")
+                        .HasForeignKey("IdPedido")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pedido");
+                });
+
             modelBuilder.Entity("PedidosVendas.Domain.Entities.Cupom", b =>
                 {
                     b.Navigation("CupomProdutos");
+                });
+
+            modelBuilder.Entity("PedidosVendas.Domain.Entities.Pedido", b =>
+                {
+                    b.Navigation("Itens");
                 });
 #pragma warning restore 612, 618
         }

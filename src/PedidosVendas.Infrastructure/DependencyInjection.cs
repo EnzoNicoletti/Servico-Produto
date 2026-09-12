@@ -65,6 +65,9 @@ public static class DependencyInjection
         // Etapa 02: persistência do agregado Cupom.
         services.AddScoped<ICupomRepository, CupomRepository>();
 
+        // Etapa 03: persistência do agregado Pedido.
+        services.AddScoped<IPedidoRepository, PedidoRepository>();
+
         return services;
     }
 

@@ -1,4 +1,5 @@
 using PedidosVendas.API.Services;
+using PedidosVendas.Application.Carrinho;
 using PedidosVendas.Application.Common.Interfaces;
 using PedidosVendas.Application.Cupons;
 using PedidosVendas.Infrastructure;
@@ -23,6 +24,9 @@ public static class ApiServiceCollectionExtensions
         // ver MEMORIA_ETAPA_02). Repositório registrado na Infrastructure.
         services.AddScoped<ICupomService, CupomService>();
         services.AddScoped<ICupomEligibilityService, CupomEligibilityService>();
+
+        // Etapa 03: ciclo de vida do carrinho.
+        services.AddScoped<ICarrinhoService, CarrinhoService>();
 
         services.AddControllers();
         services.AddPedidosVendasHealthChecks();
