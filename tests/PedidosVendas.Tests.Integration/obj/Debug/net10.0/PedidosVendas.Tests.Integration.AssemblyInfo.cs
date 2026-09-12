@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PedidosVendas.Tests.Integration")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2719862277aeb679f01601615f2ff0d9cb017b8c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+455606eeac400196bb8bd3108fe031976744b55b")]
 [assembly: System.Reflection.AssemblyProductAttribute("PedidosVendas.Tests.Integration")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PedidosVendas.Tests.Integration")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

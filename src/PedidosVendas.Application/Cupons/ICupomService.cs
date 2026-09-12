@@ -20,4 +20,13 @@ public interface ICupomService
         Guid id, Guid tenantId, CupomDados dados, CancellationToken cancellationToken = default);
 
     Task<bool> RemoverAsync(Guid id, Guid tenantId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Consome uma unidade do cupom com concorrência otimista (para a finalização).
+    /// Implementado e testado na Etapa 04, mas chamado em produção só na Etapa 07.
+    /// Lança <see cref="CupomNaoEncontradoException"/> (ausente) ou
+    /// <see cref="Domain.Exceptions.CupomInvalidoException"/> (esgotado ou conflito —
+    /// erro de negócio claro, nunca exceção de infra).
+    /// </summary>
+    Task ConsumirAsync(Guid id, Guid tenantId, CancellationToken cancellationToken = default);
 }

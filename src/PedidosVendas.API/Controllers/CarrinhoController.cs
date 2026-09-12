@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PedidosVendas.API.Contracts.Carrinho;
+using PedidosVendas.API.Contracts.Cupons;
 using PedidosVendas.Application.Carrinho;
 using PedidosVendas.Application.Common.Interfaces;
+using PedidosVendas.Application.Cupons;
 using PedidosVendas.Domain.Exceptions;
 
 namespace PedidosVendas.API.Controllers;
@@ -11,12 +13,14 @@ namespace PedidosVendas.API.Controllers;
 /// Carrinho (`Pedido` com `Status = Carrinho`). Exige autenticação: o carrinho é sempre
 /// localizado por (TenantId, IdCliente) do JWT — nunca do payload (decisão #4).
 /// Sem JWT → 401; fora do escopo usuário/tenant → 404.
+/// Etapa 04: aplicar/remover cupom e consultar o desconto (recalculado sempre).
 /// </summary>
 [ApiController]
 [Authorize]
 [Route("api/v1/carrinho")]
 public sealed class CarrinhoController(
     ICarrinhoService carrinho,
+    ICupomAplicacaoService cupons,
     ICurrentUserService usuario,
     ITenantContext tenant) : ControllerBase
 {
@@ -99,5 +103,71 @@ public sealed class CarrinhoController(
         {
             return ValidationProblem(detail: exception.Message);
         }
+    }
+
+    [HttpPost("cupom")]
+    [ProducesResponseType(typeof(CarrinhoComDescontoResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<ActionResult<CarrinhoComDescontoResponse>> AplicarCupom(
+        [FromBody] AplicarCupomRequest request, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var resultado = await cupons.AplicarCupomAsync(
+                tenant.TenantId, usuario.UserId, tenant.BranchId,
+                request.IdCupom, DateTime.UtcNow, cancellationToken);
+
+            if (resultado is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new CarrinhoComDescontoResponse(
+                CarrinhoResponse.From(resultado.Value.Pedido),
+                DescontoResponse.From(resultado.Value.Desconto)));
+        }
+        catch (CupomNaoEncontradoException)
+        {
+            return NotFound();
+        }
+        catch (CupomInaplicavelException exception)
+        {
+            return ValidationProblem(detail: exception.Message);
+        }
+        catch (PedidoInvalidoException exception)
+        {
+            return ValidationProblem(detail: exception.Message);
+        }
+    }
+
+    [HttpDelete("cupom")]
+    [ProducesResponseType(typeof(CarrinhoResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<ActionResult<CarrinhoResponse>> RemoverCupom(CancellationToken cancellationToken)
+    {
+        try
+        {
+            var pedido = await cupons.RemoverCupomAsync(
+                tenant.TenantId, usuario.UserId, tenant.BranchId, cancellationToken);
+            return pedido is null ? NotFound() : Ok(CarrinhoResponse.From(pedido));
+        }
+        catch (PedidoInvalidoException exception)
+        {
+            return ValidationProblem(detail: exception.Message);
+        }
+    }
+
+    [HttpGet("desconto")]
+    [ProducesResponseType(typeof(DescontoResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<ActionResult<DescontoResponse>> ObterDesconto(CancellationToken cancellationToken)
+    {
+        var resumo = await cupons.CalcularDescontoAsync(
+            tenant.TenantId, usuario.UserId, tenant.BranchId, DateTime.UtcNow, cancellationToken);
+        return resumo is null ? NotFound() : Ok(DescontoResponse.From(resumo));
     }
 }

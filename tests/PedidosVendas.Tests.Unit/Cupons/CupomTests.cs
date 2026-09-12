@@ -43,7 +43,7 @@ public sealed class CupomTests
             agoraUtc: Hoje);
 
         Assert.True(cupom.IsCupomProduto);
-        Assert.Equal([p1, p2], cupom.CupomProdutos.Select(cp => cp.IdProduto).Order().ToList());
+        Assert.Equal(new[] { p1, p2 }.Order().ToList(), cupom.CupomProdutos.Select(cp => cp.IdProduto).Order().ToList());
         Assert.All(cupom.CupomProdutos, cp => Assert.Equal(cupom.Id, cp.IdCupom));
     }
 

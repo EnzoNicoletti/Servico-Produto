@@ -124,6 +124,29 @@ public sealed class Pedido
         RecalcularTotal();
     }
 
+    /// <summary>
+    /// Vincula um cupom ao pedido (Etapa 04). Não consome quantidade aqui: o decremento
+    /// ocorre só na finalização (Etapa 07), pois o carrinho pode ser abandonado.
+    /// Reaplicar troca o cupom (um único IdCupom por pedido, cf. especificação).
+    /// </summary>
+    public void AplicarCupom(Guid idCupom)
+    {
+        if (idCupom == Guid.Empty)
+        {
+            throw new PedidoInvalidoException("IdCupom é obrigatório.");
+        }
+
+        GarantirCarrinhoAberto();
+        IdCupom = idCupom;
+    }
+
+    /// <summary>Desvincula o cupom (o vínculo é "grudento": nunca removido automaticamente).</summary>
+    public void RemoverCupom()
+    {
+        GarantirCarrinhoAberto();
+        IdCupom = null;
+    }
+
     private void GarantirCarrinhoAberto()
     {
         if (Status != StatusPedido.Carrinho)

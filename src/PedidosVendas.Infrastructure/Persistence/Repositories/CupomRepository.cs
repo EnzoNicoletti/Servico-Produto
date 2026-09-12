@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PedidosVendas.Domain.Entities;
+using PedidosVendas.Domain.Exceptions;
 using PedidosVendas.Domain.Interfaces;
 
 namespace PedidosVendas.Infrastructure.Persistence.Repositories;
@@ -71,7 +72,17 @@ public sealed class CupomRepository(PedidosVendasDbContext context) : ICupomRepo
             context.CupomProdutos.Add(novo);
         }
 
-        await context.SaveChangesAsync(cancellationToken);
+        try
+        {
+            await context.SaveChangesAsync(cancellationToken);
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            // Traduz o conflito otimista (xmin) em erro de domínio: a Application
+            // converte em erro de negócio claro, sem vazar exceção de infra.
+            throw new ConcorrenciaException(
+                "O registro foi alterado por outra operação. Recarregue e tente novamente.");
+        }
     }
 
     public async Task RemoverAsync(Cupom cupom, CancellationToken cancellationToken = default)

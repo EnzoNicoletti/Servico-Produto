@@ -15,11 +15,14 @@ public sealed class MockProdutoServiceClient : IProdutoServiceClient
 
     public static readonly Guid ProdutoIndisponivelId = Guid.Parse("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb");
 
+    public static readonly Guid CategoriaDoProdutoDisponivelId = Guid.Parse("cccccccc-cccc-cccc-cccc-cccccccccccc");
+
     private static readonly ProdutoDto ProdutoExemplo = new(
         Id: ProdutoDisponivelId,
         Nome: "Produto de exemplo (mock)",
         Preco: 99.90m,
-        Disponivel: true);
+        Disponivel: true,
+        IdCategoria: CategoriaDoProdutoDisponivelId);
 
     private static readonly ProdutoDto ProdutoEsgotado = new(
         Id: ProdutoIndisponivelId,

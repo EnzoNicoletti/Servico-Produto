@@ -28,6 +28,9 @@ public static class ApiServiceCollectionExtensions
         // Etapa 03: ciclo de vida do carrinho.
         services.AddScoped<ICarrinhoService, CarrinhoService>();
 
+        // Etapa 04: aplicação de cupom ao carrinho (sem decrementar quantidade).
+        services.AddScoped<ICupomAplicacaoService, CupomAplicacaoService>();
+
         services.AddControllers();
         services.AddPedidosVendasHealthChecks();
 

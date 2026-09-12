@@ -74,4 +74,21 @@ public sealed class CupomService(ICupomRepository repository) : ICupomService
         await repository.RemoverAsync(cupom, cancellationToken);
         return true;
     }
+
+    public async Task ConsumirAsync(Guid id, Guid tenantId, CancellationToken cancellationToken = default)
+    {
+        var cupom = await repository.ObterParaAtualizacaoAsync(id, tenantId, cancellationToken)
+            ?? throw new CupomNaoEncontradoException(id);
+
+        try
+        {
+            cupom.RegistrarUso();
+            await repository.AtualizarAsync(cupom, cancellationToken);
+        }
+        catch (Domain.Exceptions.ConcorrenciaException)
+        {
+            throw new Domain.Exceptions.CupomInvalidoException(
+                "O cupom foi consumido por outra operação e não possui mais unidades disponíveis.");
+        }
+    }
 }

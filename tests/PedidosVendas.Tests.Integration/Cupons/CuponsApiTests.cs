@@ -247,7 +247,9 @@ public sealed class CuponsApiTests(IntegrationTestFixture fixture)
             await repoA.AtualizarAsync(cupomA);
 
             cupomB.RegistrarUso();
-            await Assert.ThrowsAsync<DbUpdateConcurrencyException>(() => repoB.AtualizarAsync(cupomB));
+            // Etapa 04: o repositório traduz o conflito otimista em erro de domínio.
+            await Assert.ThrowsAsync<PedidosVendas.Domain.Exceptions.ConcorrenciaException>(
+                () => repoB.AtualizarAsync(cupomB));
         }
         finally
         {
