@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.EntityFrameworkCore;
 using PedidosVendas.API.Extensions;
 using PedidosVendas.API.Middleware;
 using PedidosVendas.Infrastructure;
+using PedidosVendas.Infrastructure.Persistence;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -53,6 +55,16 @@ try
 
     // Health agregado: todas as checagens (API + banco).
     app.MapHealthChecks("/health");
+
+    // Somente em desenvolvimento as migrations são aplicadas automaticamente na subida
+    // (mesmo padrão do Identity). Em produção, a migration é um passo controlado do
+    // pipeline (ex.: dotnet ef database update).
+    if (app.Environment.IsDevelopment())
+    {
+        using var scope = app.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<PedidosVendasDbContext>();
+        await db.Database.MigrateAsync();
+    }
 
     app.Run();
 }

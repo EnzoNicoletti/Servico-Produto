@@ -1,5 +1,6 @@
 using PedidosVendas.API.Services;
 using PedidosVendas.Application.Common.Interfaces;
+using PedidosVendas.Application.Cupons;
 using PedidosVendas.Infrastructure;
 
 namespace PedidosVendas.API.Extensions;
@@ -17,6 +18,11 @@ public static class ApiServiceCollectionExtensions
         services.AddScoped<CurrentUserProvider>();
         services.AddScoped<ICurrentUserService>(sp => sp.GetRequiredService<CurrentUserProvider>());
         services.AddScoped<ITenantContext>(sp => sp.GetRequiredService<CurrentUserProvider>());
+
+        // Etapa 02: casos de uso de Cupom (serviços simples; sem MediatR nesta etapa —
+        // ver MEMORIA_ETAPA_02). Repositório registrado na Infrastructure.
+        services.AddScoped<ICupomService, CupomService>();
+        services.AddScoped<ICupomEligibilityService, CupomEligibilityService>();
 
         services.AddControllers();
         services.AddPedidosVendasHealthChecks();

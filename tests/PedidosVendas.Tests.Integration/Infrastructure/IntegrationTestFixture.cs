@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using PedidosVendas.Infrastructure.Persistence;
 using PedidosVendas.Tests.Integration.Infrastructure;
 using Testcontainers.PostgreSql;
 
@@ -5,7 +8,8 @@ namespace PedidosVendas.Tests.Integration;
 
 /// <summary>
 /// Fixture compartilhada: um único container PostgreSQL + uma única instância da API
-/// para toda a coleção de testes de integração.
+/// para toda a coleção de testes de integração. Aplica as migrations da Etapa 02+
+/// (prova que a migration sobe com sucesso) antes de expor o client.
 /// </summary>
 public sealed class IntegrationTestFixture : IAsyncLifetime
 {
@@ -25,6 +29,13 @@ public sealed class IntegrationTestFixture : IAsyncLifetime
         await _postgres.StartAsync();
 
         Factory = new PedidosVendasApiFactory(_postgres.GetConnectionString());
+
+        using (var scope = Factory.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<PedidosVendasDbContext>();
+            await db.Database.MigrateAsync();
+        }
+
         Client = Factory.CreateClient();
     }
 

@@ -9,3 +9,4 @@ C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Domain\obj\Debug\
 C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Domain\obj\Debug\net10.0\refint\PedidosVendas.Domain.dll
 C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Domain\obj\Debug\net10.0\PedidosVendas.Domain.pdb
 C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Domain\obj\Debug\net10.0\ref\PedidosVendas.Domain.dll
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Domain\obj\Debug\net10.0\PedidosVendas.Domain.sourcelink.json

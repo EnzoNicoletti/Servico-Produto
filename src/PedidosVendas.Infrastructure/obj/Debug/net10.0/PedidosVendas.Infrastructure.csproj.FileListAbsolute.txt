@@ -15,3 +15,4 @@ C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\ob
 C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\refint\PedidosVendas.Infrastructure.dll
 C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\PedidosVendas.Infrastructure.pdb
 C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\ref\PedidosVendas.Infrastructure.dll
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\PedidosVendas.Infrastructure.sourcelink.json

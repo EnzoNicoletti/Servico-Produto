@@ -4,9 +4,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Npgsql;
 using PedidosVendas.Application.Catalog;
+using PedidosVendas.Domain.Interfaces;
 using PedidosVendas.Infrastructure.Catalog;
 using PedidosVendas.Infrastructure.HealthChecks;
 using PedidosVendas.Infrastructure.Persistence;
+using PedidosVendas.Infrastructure.Persistence.Repositories;
 
 namespace PedidosVendas.Infrastructure;
 
@@ -59,6 +61,9 @@ public static class DependencyInjection
 
         // Etapa 01: client mock. Etapa 03 troca por HTTP real sem mudar o contrato.
         services.AddScoped<IProdutoServiceClient, MockProdutoServiceClient>();
+
+        // Etapa 02: persistência do agregado Cupom.
+        services.AddScoped<ICupomRepository, CupomRepository>();
 
         return services;
     }
