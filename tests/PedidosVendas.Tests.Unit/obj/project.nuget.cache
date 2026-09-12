@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NiK0xGmLkno=",
+  "dgSpecHash": "XVfcEVrmGIg=",
   "success": true,
   "projectFilePath": "C:\\Users\\42628408830\\Desktop\\Servico-Produto\\tests\\PedidosVendas.Tests.Unit\\PedidosVendas.Tests.Unit.csproj",
   "expectedPackageFiles": [
@@ -15,9 +15,9 @@
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.12\\microsoft.entityframeworkcore.relational.10.0.12.nupkg.sha512",
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\10.0.12\\microsoft.extensions.caching.abstractions.10.0.12.nupkg.sha512",
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.caching.memory\\10.0.12\\microsoft.extensions.caching.memory.10.0.12.nupkg.sha512",
-    "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.configuration\\10.0.0\\microsoft.extensions.configuration.10.0.0.nupkg.sha512",
+    "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.configuration\\10.0.12\\microsoft.extensions.configuration.10.0.12.nupkg.sha512",
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\10.0.12\\microsoft.extensions.configuration.abstractions.10.0.12.nupkg.sha512",
-    "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.configuration.binder\\10.0.0\\microsoft.extensions.configuration.binder.10.0.0.nupkg.sha512",
+    "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.configuration.binder\\10.0.12\\microsoft.extensions.configuration.binder.10.0.12.nupkg.sha512",
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.12\\microsoft.extensions.dependencyinjection.10.0.12.nupkg.sha512",
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.12\\microsoft.extensions.dependencyinjection.abstractions.10.0.12.nupkg.sha512",
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.dependencymodel\\10.0.0\\microsoft.extensions.dependencymodel.10.0.0.nupkg.sha512",
@@ -29,6 +29,7 @@
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.logging\\10.0.12\\microsoft.extensions.logging.10.0.12.nupkg.sha512",
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.12\\microsoft.extensions.logging.abstractions.10.0.12.nupkg.sha512",
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.options\\10.0.12\\microsoft.extensions.options.10.0.12.nupkg.sha512",
+    "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\10.0.12\\microsoft.extensions.options.configurationextensions.10.0.12.nupkg.sha512",
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.12\\microsoft.extensions.primitives.10.0.12.nupkg.sha512",
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.19.2\\microsoft.identitymodel.abstractions.8.19.2.nupkg.sha512",
     "C:\\Users\\42628408830\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.19.2\\microsoft.identitymodel.jsonwebtokens.8.19.2.nupkg.sha512",

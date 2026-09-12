@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PedidosVendas.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+455606eeac400196bb8bd3108fe031976744b55b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ac4f23cf42ed7c51fe6f46cdd94f3b45c8b4e5a")]
 [assembly: System.Reflection.AssemblyProductAttribute("PedidosVendas.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PedidosVendas.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

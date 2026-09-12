@@ -5,6 +5,7 @@ using PedidosVendas.API.Contracts.Cupons;
 using PedidosVendas.Application.Carrinho;
 using PedidosVendas.Application.Common.Interfaces;
 using PedidosVendas.Application.Cupons;
+using PedidosVendas.Application.Frete;
 using PedidosVendas.Domain.Exceptions;
 
 namespace PedidosVendas.API.Controllers;
@@ -21,6 +22,7 @@ namespace PedidosVendas.API.Controllers;
 public sealed class CarrinhoController(
     ICarrinhoService carrinho,
     ICupomAplicacaoService cupons,
+    IFreteCalculator frete,
     ICurrentUserService usuario,
     ITenantContext tenant) : ControllerBase
 {
@@ -169,5 +171,36 @@ public sealed class CarrinhoController(
         var resumo = await cupons.CalcularDescontoAsync(
             tenant.TenantId, usuario.UserId, tenant.BranchId, DateTime.UtcNow, cancellationToken);
         return resumo is null ? NotFound() : Ok(DescontoResponse.From(resumo));
+    }
+
+    [HttpPost("frete")]
+    [ProducesResponseType(typeof(FreteResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<ActionResult<FreteResponse>> CalcularFrete(
+        [FromBody] CalcularFreteRequest request, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var pedido = await carrinho.ObterAsync(
+                tenant.TenantId, usuario.UserId, tenant.BranchId, cancellationToken);
+            if (pedido is null)
+            {
+                return NotFound();
+            }
+
+            var itens = pedido.Itens
+                .Select(i => new ItemFrete(i.IdProduto, i.Quantidade, i.ValorUnitario))
+                .ToList();
+
+            var cotacao = await frete.CalcularAsync(
+                request.CepDestino, itens, pedido.IdUnidade, cancellationToken);
+            return Ok(FreteResponse.From(cotacao));
+        }
+        catch (CepInvalidoException exception)
+        {
+            return ValidationProblem(detail: exception.Message);
+        }
     }
 }

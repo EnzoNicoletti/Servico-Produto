@@ -22,6 +22,10 @@ public sealed class CarrinhoService(
         return carrinho;
     }
 
+    public Task<Pedido?> ObterAsync(
+        Guid tenantId, Guid? idCliente, Guid? idUnidade, CancellationToken cancellationToken = default)
+        => pedidos.ObterCarrinhoAbertoAsync(tenantId, idCliente, idUnidade, cancellationToken);
+
     public async Task<Pedido> AdicionarItemAsync(
         Guid tenantId, Guid? idCliente, Guid? idUnidade,
         Guid idProduto, int quantidade, CancellationToken cancellationToken = default)

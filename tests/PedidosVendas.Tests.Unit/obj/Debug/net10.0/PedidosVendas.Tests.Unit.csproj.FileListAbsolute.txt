@@ -151,3 +151,6 @@ C:\Users\42628408830\Desktop\Servico-Produto\tests\PedidosVendas.Tests.Unit\bin\
 C:\Users\42628408830\Desktop\Servico-Produto\tests\PedidosVendas.Tests.Unit\bin\Debug\net10.0\Serilog.Sinks.Debug.dll
 C:\Users\42628408830\Desktop\Servico-Produto\tests\PedidosVendas.Tests.Unit\bin\Debug\net10.0\Serilog.Sinks.File.dll
 C:\Users\42628408830\Desktop\Servico-Produto\tests\PedidosVendas.Tests.Unit\obj\Debug\net10.0\PedidosVendas.Tests.Unit.sourcelink.json
+C:\Users\42628408830\Desktop\Servico-Produto\tests\PedidosVendas.Tests.Unit\bin\Debug\net10.0\Microsoft.Extensions.Configuration.dll
+C:\Users\42628408830\Desktop\Servico-Produto\tests\PedidosVendas.Tests.Unit\bin\Debug\net10.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\42628408830\Desktop\Servico-Produto\tests\PedidosVendas.Tests.Unit\bin\Debug\net10.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll

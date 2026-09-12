@@ -1825,8 +1825,11 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "10.0.12",
           "Microsoft.EntityFrameworkCore.Relational": "10.0.12",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.12",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "10.0.12",
           "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "10.0.12",
+          "Microsoft.Extensions.Options": "10.0.12",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "10.0.12",
           "Npgsql": "10.0.3",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.3",
           "PedidosVendas.Application": "1.0.0",

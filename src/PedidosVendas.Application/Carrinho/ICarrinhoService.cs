@@ -12,6 +12,10 @@ public interface ICarrinhoService
     Task<Pedido> ObterOuCriarAsync(
         Guid tenantId, Guid? idCliente, Guid? idUnidade, CancellationToken cancellationToken = default);
 
+    /// <summary>Obtém o carrinho aberto sem criar. Retorna nulo se não existir.</summary>
+    Task<Pedido?> ObterAsync(
+        Guid tenantId, Guid? idCliente, Guid? idUnidade, CancellationToken cancellationToken = default);
+
     Task<Pedido> AdicionarItemAsync(
         Guid tenantId, Guid? idCliente, Guid? idUnidade,
         Guid idProduto, int quantidade, CancellationToken cancellationToken = default);

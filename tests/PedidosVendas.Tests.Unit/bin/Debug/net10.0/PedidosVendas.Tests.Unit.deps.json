@@ -117,12 +117,36 @@
           }
         }
       },
+      "Microsoft.Extensions.Configuration/10.0.12": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.12",
+          "Microsoft.Extensions.Primitives": "10.0.12"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Configuration.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/10.0.12": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "10.0.12"
         },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/10.0.12": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.12",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.12"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Configuration.Binder.dll": {
             "assemblyVersion": "10.0.0.0",
             "fileVersion": "10.0.1226.42308"
           }
@@ -246,6 +270,21 @@
         },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Options.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/10.0.12": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.12",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.12",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.12",
+          "Microsoft.Extensions.Options": "10.0.12",
+          "Microsoft.Extensions.Primitives": "10.0.12"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
             "assemblyVersion": "10.0.0.0",
             "fileVersion": "10.0.1226.42308"
           }
@@ -679,6 +718,7 @@
       },
       "Serilog.Settings.Configuration/10.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.Configuration.Binder": "10.0.12",
           "Microsoft.Extensions.DependencyModel": "10.0.0",
           "Serilog": "4.3.0"
         },
@@ -822,8 +862,11 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "10.0.12",
           "Microsoft.EntityFrameworkCore.Relational": "10.0.12",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.12",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "10.0.12",
           "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "10.0.12",
+          "Microsoft.Extensions.Options": "10.0.12",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "10.0.12",
           "Npgsql": "10.0.3",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.3",
           "PedidosVendas.Application": "1.0.0",
@@ -907,12 +950,26 @@
       "path": "microsoft.extensions.caching.memory/10.0.12",
       "hashPath": "microsoft.extensions.caching.memory.10.0.12.nupkg.sha512"
     },
+    "Microsoft.Extensions.Configuration/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e3IPP32CRNL031VZJAUTlCTG0YN7WFh4mN3fsSHTDQCJB+3+f0jGycv4fXk3rrftaY3B85XrQaj7sRthrOsavg==",
+      "path": "microsoft.extensions.configuration/10.0.12",
+      "hashPath": "microsoft.extensions.configuration.10.0.12.nupkg.sha512"
+    },
     "Microsoft.Extensions.Configuration.Abstractions/10.0.12": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-8xaGcvS/qZ1otoxPQCEJkNva389CVL/plNcvIETZhQTETYdRkYDPEYhUMoAGONo4FU45ufdfE0j29AfWVVj0wA==",
       "path": "microsoft.extensions.configuration.abstractions/10.0.12",
       "hashPath": "microsoft.extensions.configuration.abstractions.10.0.12.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Binder/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dAgIf1TOr8KLs+aBRIbXUZBjHoSH4rDG8+XkX/Q6AZwkQdMA0+yPDKTHsieeXdZDfpOpZVHzOnuAb5Z2nX3KsA==",
+      "path": "microsoft.extensions.configuration.binder/10.0.12",
+      "hashPath": "microsoft.extensions.configuration.binder.10.0.12.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection/10.0.12": {
       "type": "package",
@@ -990,6 +1047,13 @@
       "sha512": "sha512-TDYD33TSRpXKZWlmTXNlj5kCihxatmv2Ec1u6C+bMYLphCS7PoSLE9Pjd/nunDoE7yETk+LLKjVJX78HYtWjpA==",
       "path": "microsoft.extensions.options/10.0.12",
       "hashPath": "microsoft.extensions.options.10.0.12.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rqpu4qj5WE9x1IHGXSIgHBKi7IUlQaHyp4aXCYIanG2OghlUMFZpZTgExaXwcvmLAJHsxKQWMPpc7D2WIbCVtA==",
+      "path": "microsoft.extensions.options.configurationextensions/10.0.12",
+      "hashPath": "microsoft.extensions.options.configurationextensions.10.0.12.nupkg.sha512"
     },
     "Microsoft.Extensions.Primitives/10.0.12": {
       "type": "package",

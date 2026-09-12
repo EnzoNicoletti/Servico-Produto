@@ -4,8 +4,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Npgsql;
 using PedidosVendas.Application.Catalog;
+using PedidosVendas.Application.Frete;
 using PedidosVendas.Domain.Interfaces;
 using PedidosVendas.Infrastructure.Catalog;
+using PedidosVendas.Infrastructure.Frete;
 using PedidosVendas.Infrastructure.HealthChecks;
 using PedidosVendas.Infrastructure.Persistence;
 using PedidosVendas.Infrastructure.Persistence.Repositories;
@@ -67,6 +69,18 @@ public static class DependencyInjection
 
         // Etapa 03: persistência do agregado Pedido.
         services.AddScoped<IPedidoRepository, PedidoRepository>();
+
+        // Etapa 05: frete plugável por configuração. "Mock" é o único provedor desta
+        // etapa; um provedor real entra como nova classe + novo ramo, sem tocar chamadas.
+        services.Configure<FreteOptions>(configuration.GetSection(FreteOptions.SectionName));
+        var provedorFrete = configuration.GetSection(FreteOptions.SectionName).Get<FreteOptions>()?.Provedor ?? "Mock";
+        if (!string.Equals(provedorFrete, "Mock", StringComparison.OrdinalIgnoreCase))
+        {
+            throw new InvalidOperationException(
+                $"Provedor de frete '{provedorFrete}' não implementado. Valores aceitos: Mock.");
+        }
+
+        services.AddScoped<IFreteCalculator, FreteCalculatorMock>();
 
         return services;
     }
