@@ -1,0 +1,11 @@
+# Artefatos de build locais não podem entrar na imagem (geram assets inválidos no Linux)
+**/bin/
+**/obj/
+**/TestResults/
+
+# IDE
+.vs/
+.idea/
+
+# Documentação não faz parte da imagem
+docs/

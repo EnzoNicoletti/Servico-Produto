@@ -1,0 +1,15 @@
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\bin\Debug\net10.0\PedidosVendas.Application.deps.json
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\bin\Debug\net10.0\PedidosVendas.Application.dll
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\bin\Debug\net10.0\PedidosVendas.Application.pdb
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\bin\Debug\net10.0\PedidosVendas.Domain.dll
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\bin\Debug\net10.0\PedidosVendas.Domain.pdb
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\obj\Debug\net10.0\PedidosVendas.Application.csproj.AssemblyReference.cache
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\obj\Debug\net10.0\PedidosVendas.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\obj\Debug\net10.0\PedidosVendas.Application.AssemblyInfoInputs.cache
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\obj\Debug\net10.0\PedidosVendas.Application.AssemblyInfo.cs
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\obj\Debug\net10.0\PedidosVendas.Application.csproj.CoreCompileInputs.cache
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\obj\Debug\net10.0\PedidosV.78E5EA24.Up2Date
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\obj\Debug\net10.0\PedidosVendas.Application.dll
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\obj\Debug\net10.0\refint\PedidosVendas.Application.dll
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\obj\Debug\net10.0\PedidosVendas.Application.pdb
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Application\obj\Debug\net10.0\ref\PedidosVendas.Application.dll

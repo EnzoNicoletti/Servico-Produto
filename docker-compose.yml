@@ -1,0 +1,49 @@
+name: pedidosvendas
+
+services:
+  pedidosvendas-db:
+    image: postgres:16-alpine
+    container_name: pedidosvendas-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: pedidosvendas
+      POSTGRES_PASSWORD: pedidosvendas_dev
+      POSTGRES_DB: pedidosvendas
+    ports:
+      # Host usa 5433 para não colidir com o identity-db (5432) nem com o
+      # estoque-postgres (15432). Dentro da rede do compose, Host=pedidosvendas-db:5432.
+      - "5433:5432"
+    volumes:
+      - pedidosvendas-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pedidosvendas -d pedidosvendas"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  pedidosvendas-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pedidosvendas-api
+    restart: unless-stopped
+    depends_on:
+      pedidosvendas-db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+      ConnectionStrings__DefaultConnection: Host=pedidosvendas-db;Port=5432;Database=pedidosvendas;Username=pedidosvendas;Password=pedidosvendas_dev
+      # DEV LOCAL: validação por chave simétrica enquanto o Identity real não
+      # assina para esta audiência. Em produção, remover SigningKey/ValidIssuer
+      # e configurar apenas Authentication__Jwt__Authority (validação via JWKS).
+      Authentication__Jwt__SigningKey: dev-local-signing-key-0123456789abcdef0123456789abcdef
+      Authentication__Jwt__ValidIssuer: pedidosvendas-identity-dev
+      Authentication__Jwt__Audience: pedidosvendas-api
+      Authentication__Jwt__RequireHttpsMetadata: "false"
+    ports:
+      - "8081:8080"
+
+volumes:
+  pedidosvendas-db-data:

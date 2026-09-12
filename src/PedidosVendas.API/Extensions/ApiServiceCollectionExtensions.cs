@@ -1,0 +1,26 @@
+using PedidosVendas.API.Services;
+using PedidosVendas.Application.Common.Interfaces;
+using PedidosVendas.Infrastructure;
+
+namespace PedidosVendas.API.Extensions;
+
+/// <summary>
+/// Composição dos serviços específicos da camada de Api.
+/// </summary>
+public static class ApiServiceCollectionExtensions
+{
+    public static IServiceCollection AddApiServices(this IServiceCollection services)
+    {
+        services.AddHttpContextAccessor();
+
+        // Mesma instância scoped exposta pelas duas abstrações (fonte única das claims).
+        services.AddScoped<CurrentUserProvider>();
+        services.AddScoped<ICurrentUserService>(sp => sp.GetRequiredService<CurrentUserProvider>());
+        services.AddScoped<ITenantContext>(sp => sp.GetRequiredService<CurrentUserProvider>());
+
+        services.AddControllers();
+        services.AddPedidosVendasHealthChecks();
+
+        return services;
+    }
+}

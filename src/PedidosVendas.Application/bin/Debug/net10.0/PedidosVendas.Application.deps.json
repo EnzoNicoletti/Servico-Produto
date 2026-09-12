@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "PedidosVendas.Application/1.0.0": {
+        "dependencies": {
+          "PedidosVendas.Domain": "1.0.0"
+        },
+        "runtime": {
+          "PedidosVendas.Application.dll": {}
+        }
+      },
+      "PedidosVendas.Domain/1.0.0": {
+        "runtime": {
+          "PedidosVendas.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PedidosVendas.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PedidosVendas.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,17 @@
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\bin\Debug\net10.0\PedidosVendas.Infrastructure.deps.json
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\bin\Debug\net10.0\PedidosVendas.Infrastructure.dll
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\bin\Debug\net10.0\PedidosVendas.Infrastructure.pdb
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\bin\Debug\net10.0\PedidosVendas.Application.dll
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\bin\Debug\net10.0\PedidosVendas.Domain.dll
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\bin\Debug\net10.0\PedidosVendas.Domain.pdb
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\bin\Debug\net10.0\PedidosVendas.Application.pdb
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\PedidosVendas.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\PedidosVendas.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\PedidosVendas.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\PedidosVendas.Infrastructure.AssemblyInfo.cs
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\PedidosVendas.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\PedidosV.9D457273.Up2Date
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\PedidosVendas.Infrastructure.dll
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\refint\PedidosVendas.Infrastructure.dll
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\PedidosVendas.Infrastructure.pdb
+C:\Users\42628408830\Desktop\Servico-Produto\src\PedidosVendas.Infrastructure\obj\Debug\net10.0\ref\PedidosVendas.Infrastructure.dll
